@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ankita Das | Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom right, #0f0c29, #302b63, #24243e);
+      background-attachment: fixed;
+      color: white;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+      border-bottom: 1px solid #ddd;
+      z-index: 50;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: white;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+      color: #ffd6f6;
+    }
+
+    .nav-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      text-align: right;
+      font-size: 0.9rem;
+    }
+
+    .nav-contact a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .nav-contact a:hover {
+      color: #fb68fb;
+    }
+
+    .nav-contact i {
+      margin-right: 0.4rem;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+
+      .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .nav-contact {
+        align-items: flex-start;
+        text-align: left;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+    }
+
+    .about-me-section {
+      padding: 60px 20px;
+      margin-top: 60px;
+      color: white;
+    }
+
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1000px;
+      margin: auto;
+      gap: 2rem;
+    }
+
+    .about-left {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .about-left h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .about-left p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .social-icons a {
+      margin-right: 1rem;
+      font-size: 1.5rem;
+      color: white;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: #ffd6f6;
+    }
+
+    .about-right {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .about-right img {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #fff;
+      box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3), 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .skills-section {
+      padding: 60px 20px;
+    }
+
+    .skills-content {
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .skills-content h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .skill-card {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      font-size: 1rem;
+      font-weight: bold;
+      color: #222;
+    }
+
+    .cards {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .cards .card {
+      width: 200px;
+      height: 240px;
+      padding: 1rem;
+      color: white;
+      border-radius: 8px;
+      text-align: center;
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .cards .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .cards .red { background-color: #e74c3c; }
+    .cards .blue { background-color: #3498db; }
+    .cards .green { background-color: #2ecc71; }
+
+    .tip {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .second-text {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .card-btn {
+      background-color: #fff;
+      color: #333;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+
+    .card-btn:hover {
+      background-color: #eee;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #000;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="nav-container">
+        <button class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#about">About me</a></li>
+          <li><a href="#info-cards">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Get in Touch</a></li>
+        </ul>
+        <div class="nav-contact">
+          <a href="mailto:ankitadasofficial771@gmail.com"><i class="fas fa-envelope"></i> ankitadasofficial771@gmail.com</a>
+          <a href="tel:+916295603867"><i class="fas fa-phone"></i> +91 6295603867</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section id="about" class="about-me-section">
+    <div class="about-content">
+      <div class="about-left">
+        <h2>Hello, I'm Ankita Das</h2>
+        <p>My goal is to blend creativity with technical skills to deliver impactful digital experiences. I am driven by a strong desire to learn and explore, aiming to bring out my full potential and creativity in everything I do. </p>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/share/15LwMer8jb/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://github.com/ankitadas771" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/ankita-das-9635b1315?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="about-right">
+        <img src="portfolioimage.png" alt="Ankita Das">
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="skills-section">
+    <div class="skills-content">
+      <h2>My Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card">HTML5</div>
+        <div class="skill-card">CSS3</div>
+        <div class="skill-card">JavaScript</div>
+        <div class="skill-card">React</div>
+        <div class="skill-card">Git & GitHub</div>
+        <div class="skill-card">Responsive Design</div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section id="info-cards" class="cards">
+      <div class="card red">
+        <p class="tip">Dynamic Weather</p>
+        <p class="second-text">Dynamic weather app. It changes background according to weather condition. This web app is made with Javascript, CSS, HTML.</p>
+        <a href="https://ankitadas771.github.io/dynamic-weather-app/" class="card-btn" target="_blank">Visit</a>
+      </div>
+      <div class="card blue">
+        <p class="tip">Project 2</p>
+        <p class="second-text">in progress</p>
+        <a href="https://ankitadas771.github.io/dynamic-weather-app/" class="card-btn" target="_blank">Visit</a>
+      </div>
+      <div class="card green">
+        <p class="tip">project 3</p>
+        <p class="second-text">in progress </p>
+        <a href="https://ankitadas771.github.io/dynamic-weather-app/" class="card-btn" target="_blank">Visit</a>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <p>&copy; 2025 Ankita Das | Portfolio | ankitadasofficial771@gmail.com | +91 6295603867</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const navLinks = document.getElementById("navLinks");
+      navLinks.classList.toggle("show");
+    }
+  </script>
+</body>
+</html>
+
